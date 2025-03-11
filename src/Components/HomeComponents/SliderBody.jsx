@@ -13,7 +13,7 @@ export default function SliderBody2() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios("http://localhost:7000/rooms");
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/rooms`);
         setRooms(data);
       } catch (error) {
         console.error("Error fetching rooms:", error);
@@ -38,7 +38,7 @@ export default function SliderBody2() {
       {rooms.map((room) => (
         <SwiperSlide key={room._id}>
           <Link to={`/room/${room._id}`}>  {/* ✅ Corrected _id reference */}
-            <div className="p-4 bg-gray-100 w-[450px] rounded-lg shadow-md">
+            <div className="p-4 bg-gray-100 w-[450px] rounded-lg sm:grid sm:grid-cols-1 shadow-md">
               <img
                 src={Array.isArray(room.roomImages) ? room.roomImages[0] : room.roomImages}
                 alt={room.name}

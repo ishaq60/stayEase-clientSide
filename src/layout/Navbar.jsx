@@ -17,14 +17,14 @@ const Navbar = () => {
       };
   return (
     <div className="navbar bg-base-100 shadow-sm container px-4 mx-auto">
-      <div className="flex-1">
+      <div className=" font-yeseva flex-1">
         <div className="flex gap-2 items-center">
           <img className="w-auto h-7" src="" alt="" />
-          <span className="font-bold">SoloSphere</span>
+          <Link to="/" className="font-yeseva text-3xl  font-bold">stayEase</Link>
         </div>
       </div>
-      <div className="flex-none">
-        <ul className="menu menu-horizontal px-2">
+      <div className="flex-none flex-wrap">
+        <ul className="menu  menu-horizontal px-2">
         <li>
       <Link to="/">Home</Link>
     </li>

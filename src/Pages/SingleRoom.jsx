@@ -1,31 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 const SingleRoom = ({ room }) => {
-  console.log(room);
-  const { _id } = room;
-
-  const [roomDetails, setRoomDetails] = useState(null);
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await axios.get(`http://localhost:7000/rooms"${_id}`);
-        setRoomDetails(data);
-      } catch (error) {
-        console.error("Error fetching room details:", error);
-      }
-    };
-
-    if (_id) getData();
-  }, [_id]); 
+  const { _id, roomImages, name } = room;
 
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
-      <Link to={`/room/${_id}`}>
-        <figure>
-          <img src={room.roomImages?.[0] || room.roomImages} alt={room.name} className="w-full h-48 object-cover rounded-lg" />
+    <div className="card bg-base-100 w-[400px] h-[350px] shadow-md overflow-hidden rounded-lg 
+                    transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
+      <Link to={`/room/${_id}`} className="block w-full h-full">
+        <figure className="w-full h-full">
+          <img
+            src={roomImages?.[0] || roomImages}
+            alt={name}
+            className="w-full h-full object-cover transition-opacity duration-300 hover:opacity-90"
+          />
         </figure>
       </Link>
     </div>
